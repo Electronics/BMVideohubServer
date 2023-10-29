@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMVideohubServer", "BMVideohubServer\BMVideohubServer.csproj", "{4959FF79-93B0-41DD-8C1E-FFA51CF68B57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mdns", "net-mdns\src\Mdns.csproj", "{55CE979A-486F-4177-8EBC-399600E1BD86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4959FF79-93B0-41DD-8C1E-FFA51CF68B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4959FF79-93B0-41DD-8C1E-FFA51CF68B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4959FF79-93B0-41DD-8C1E-FFA51CF68B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4959FF79-93B0-41DD-8C1E-FFA51CF68B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CE979A-486F-4177-8EBC-399600E1BD86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CE979A-486F-4177-8EBC-399600E1BD86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CE979A-486F-4177-8EBC-399600E1BD86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CE979A-486F-4177-8EBC-399600E1BD86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEE8F11E-10C8-411E-933D-5B3AEB155BAC}
+	EndGlobalSection
+EndGlobal
