@@ -9,7 +9,7 @@ using Makaretu.Dns;
 
 namespace BMVideohubServer
 {
-    internal class BMVideoHubServer {
+    public class BMVideoHubServer {
         TcpListener? server = null;
         public event EventHandler<(int, int)>? RouteUpdated;
         IPAddress thisIP;

@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-enum LockState { Unlocked, Locked, Owned, Force }
+public enum LockState { Unlocked, Locked, Owned, Force }
 
 namespace BMVideohubServer {
 
