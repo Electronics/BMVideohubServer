@@ -1,6 +1,7 @@
 ﻿using Makaretu.Dns;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,11 +17,13 @@ namespace BMVideohubServer {
 		NetworkStream clientStream;
 		IPAddress? clientIP;
 		object streamWriteLock;
+        BMVideoHubServer? parent;
 
 		static List<BMConnection> connections = new List<BMConnection>(); // we need a list of all clients to send out new broadcast changes, use the whole object due to lock changes need to be per-client
 
-		public BMConnection(object client) {
+		public BMConnection(object client, BMVideoHubServer? p=null) {
 			tcpClient = (TcpClient)client;
+			parent = p;
 			streamWriteLock = new object();
 			connections.Add(this);
 			clientStream = tcpClient.GetStream();
@@ -31,7 +34,7 @@ namespace BMVideohubServer {
 			Console.WriteLine($"{clientIP} connected");
 		}
 
-		private static void broadcast(string message) {
+		public static void broadcast(string message) {
 			foreach(var c in connections) {
 				try {
 					if (c.tcpClient != null && c.tcpClient.Connected) {
@@ -44,7 +47,7 @@ namespace BMVideohubServer {
 				}
 			}
 		}
-		private static void broadcastLockUpdate() {
+		public static void broadcastLockUpdate() {
 			foreach (var c in connections) {
 				var update = c.compileOutputLocks();
 				try {
@@ -134,6 +137,7 @@ namespace BMVideohubServer {
 									Console.WriteLine($"Adding new route from out {newRouteTo} to input {newRouteFrom}");
 									try {
 										BMServerConfig.GetInstance().Routing[newRouteTo] = newRouteFrom;
+										parent?.notifyRoute(newRouteTo,newRouteFrom);
 									} catch (KeyNotFoundException) {
 										Console.WriteLine($"Asked to add route to non-existant output {newRouteTo}");
 									}

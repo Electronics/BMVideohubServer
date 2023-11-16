@@ -67,7 +67,7 @@ namespace BMVideohubServer {
 			modelName = "Blackmagic Smart Videohub";
 			friendlyName = "Jamie sux";
 			protocolVersion = 2.5;
-			for (int i=0;i<16;i++) {
+			for (int i=0;i<100;i++) {
 				Routing.Add(i, i);
 				Inputs.Add(i,$"Input {i}");
 				Outputs.Add(i,$"Out {i}");
@@ -127,5 +127,15 @@ namespace BMVideohubServer {
 			state = LockState.Unlocked;
 			return false;
 		}
-	}
+
+        public string compileOutputRouting() { // TODO duplicated code in BMConnection
+            string s = "";
+            s += "VIDEO OUTPUT ROUTING:\n";
+            foreach (var item in Routing) {
+                s += $"{item.Key} {item.Value}\n";
+            }
+            s += "\n";
+            return s;
+        }
+    }
 }
