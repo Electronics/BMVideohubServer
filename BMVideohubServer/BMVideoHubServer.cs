@@ -35,6 +35,7 @@ namespace BMVideohubServer
             try {
                 BMServerConfig.GetInstance().Routing[output] = input;
                 BMConnection.broadcast(BMServerConfig.GetInstance().compileOutputRouting());
+                BMServerConfig.GetInstance().Save();
             } catch (KeyNotFoundException) {
                 Console.WriteLine($"[Internal] Tried to change route of output that does not exist ({output})");
             }
